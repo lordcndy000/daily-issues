@@ -22,16 +22,28 @@ export class FirebaseService {
   register(email, password, name) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((user) => {
-
+        // Create the object to be pushed to '/users' collection
         const userDataObj = {
           userId: user.uid,
           email: user.email,
           name: name
         };
-
+        // push the object
         this.users.push(userDataObj);
         this.dialog.open(RegisterSuccessDialog);
         this.router.navigate(['']);
+        // firebase automatically signs in the user
+      }).then(() => {
+        // update the user profile
+        const user = firebase.auth().currentUser;
+        user.updateProfile({
+          displayName: name,
+          photoURL: ''
+        }).then(() => {
+          console.log(user.displayName);
+        }, (error) => {
+          console.log(error);
+        });
       })
       .catch((error) => {
         // handle errors
@@ -46,7 +58,7 @@ export class FirebaseService {
   login(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
-        console.log(user.name);
+        console.log(user.displayName);
       })
       .catch((error) => {
         const errorCode = error['code'];
