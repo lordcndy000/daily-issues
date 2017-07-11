@@ -1,0 +1,245 @@
+.home-wrap {
+  overflow: hidden;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-container {
+  background: #EDE7F6;
+  width: 415px;
+  height: 100%;
+  -webkit-box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 130px 50px 30px;
+}
+
+.mat-input-container {
+  width: 100%;
+  margin: 20px 0;
+}
+
+button[type="submit"] {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.separator {
+  width: 100%;
+  text-align: center;
+}
+
+.separator span {
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+  color: #8b8b8b;
+  display: inline-block;
+  padding: 0 8px;
+}
+
+.separator span::before {
+  right: 100%;
+}
+
+.separator span::after {
+  left: 100%;
+}
+
+.separator span::before,
+.separator span::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 10px;
+  width: 30px;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+}
+
+.social-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  margin: 10px;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: center;
+  line-height: 34px;
+  white-space: nowrap;
+  font-size: 14px;
+  color: #FFF;
+  width: 230px;
+}
+
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 35px;
+  height: 100%;
+}
+
+
+/* Facebook */
+
+.loginBtn--facebook {
+  background-color: #4C69BA;
+}
+
+.loginBtn--facebook:before {
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
+}
+
+
+/* Google */
+
+.loginBtn--google {
+  background: #DD4B39;
+}
+
+.loginBtn--google:before {
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+}
+
+.signup {
+  text-align: center;
+  font-weight: 500;
+  margin: 12px 0;
+}
+
+.signup a {
+  padding-left: 10px;
+}
+
+
+/*MAIN*/
+
+.main-container {
+  background: url(/assets/img/bg-home.jpg) no-repeat center;
+  background-size: cover;
+  height: 100%;
+  margin-left: 415px;
+  text-align: right;
+  padding: 150px;
+  color: #fff;
+  font-weight: 300;
+}
+
+.welcome {
+  font-size: 36px;
+}
+
+.sub-content {
+  font-size: 18px;
+}
+
+.sub-content a {
+  color: #FFC107;
+}
+
+.btnMobile {
+  color: #000;
+  display: none;
+  text-decoration: none;
+}
+
+#heart {
+  -webkit-animation: beat 0.4s ease-in-out infinite alternate-reverse;
+  -moz-animation: beat 0.4s ease-in-out infinite alternate-reverse;
+  animation: beat 0.4s ease-in-out infinite alternate-reverse;
+}
+
+.login-mobile {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #EDE7F6;
+  padding: 100px;
+}
+
+@keyframes beat {
+  0% {
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  100% {
+    -ms-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1200px) {
+  .login-container {
+    width: 390px;
+  }
+  .main-container {
+    margin-left: 390px;
+    padding: 125px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .login-container {
+    width: 350px;
+    padding: 110px 25px 25px;
+  }
+  .main-container {
+    margin-left: 350px;
+    padding: 105px;
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .home-wrap {
+    overflow: auto;
+  }
+  .login-container {
+    display: none;
+  }
+  .main-container {
+    background-attachment: fixed;
+    margin-left: 0;
+    text-align: center;
+    position: relative;
+    -webkit-perspective: 1000;
+  }
+  .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .btnMobile {
+    display: inline-block;
+  }
+  .login-mobile {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main-container {
+    background-attachment: scroll;
+    -webkit-perspective: 1000;
+  }
+  .login-mobile {
+    padding: 50px;
+  }
+}

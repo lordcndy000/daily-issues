@@ -1,0 +1,125 @@
+<div class="reg-wrap">
+  <div class="reg-container">
+    <h4>Register an account</h4>
+    <h5>Don't let unnecessary issues ruin your day.</h5>
+
+    <form [formGroup]="registerForm" (submit)="registerSubmit()">
+      <md-input-container>
+        <input formControlName="name" [formGroup]="registerForm" mdInput placeholder="Name" type="text" [(ngModel)]="name" name="name"
+          class="input-control">
+        <md-error *ngIf="registerForm.controls.name.errors?.required">
+          Name is<strong> required</strong>
+        </md-error>
+      </md-input-container>
+
+      <md-input-container>
+        <input formControlName="email" [formGroup]="registerForm" mdInput placeholder="Email" type="email" [(ngModel)]="email" name="email"
+          class="input-control">
+        <md-error *ngIf="registerForm.controls.email.errors?.pattern">
+          Please enter a valid email address
+        </md-error>
+        <md-error *ngIf="registerForm.controls.email.errors?.required">
+          Email is <strong>required</strong>
+        </md-error>
+      </md-input-container>
+
+      <md-input-container>
+        <input formControlName="password" [formGroup]="registerForm" mdInput placeholder="Password" type="password" [(ngModel)]="password"
+          name="password" class="input-control">
+        <md-error *ngIf="registerForm.controls.password.errors?.minlength">
+          Password must be at least <strong>8</strong> characters long
+        </md-error>
+        <md-error *ngIf="registerForm.controls.password.errors?.required">
+          Password is <strong>required</strong>
+        </md-error>
+      </md-input-container>
+
+      <md-input-container>
+        <input formControlName="confirmPassword" [formGroup]="registerForm" mdInput placeholder="Confirm Password" type="password"
+          [(ngModel)]="confirmPassword" name="confirmPassword" class="input-control">
+        <md-error *ngIf="registerForm.controls.confirmPassword.errors?.required">
+          Passwords do not<strong> match</strong>
+        </md-error>
+        <md-error *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">
+          Passwords do not<strong> match</strong>
+        </md-error>
+      </md-input-container>
+
+      <md-checkbox formControlName="acceptTerms" [formGroup]="registerForm" class="terms">I have read and accept <a href="#">terms and conditions</a></md-checkbox>
+
+
+      <button type="submit" md-raised-button>Register my account</button>
+    </form>
+
+    <p class="signup">Already have an account? <a [routerLink]="['']">Sign in</a> </p>
+  </div>
+
+
+  <div class="reg-main-container">
+
+    <div class="wrapper">
+
+      <img src="assets/img/main-logo.svg" width="150" height="150">
+      <p class="welcome">Welcome to the Daily Issues!</p>
+      <p class="sub-content">Made with <i class="fa fa-heart" id="heart" aria-hidden="true"></i> for Cindy by Lordwill to manage and schedule fights
+        reasonably.
+      </p>
+      <p class="sub-content">Click <a href="#">here</a> to see all features.</p>
+
+      <a scrollTo href="#mobile-reg" md-raised-button class="btnMobile">Register now</a>
+    </div>
+  </div>
+
+  <div class="reg-mobile" id="mobile-reg">
+
+    <h4>Register an account</h4>
+    <h5>Don't let unnecessary issues ruin your day.</h5>
+
+    <form [formGroup]="registerForm" (submit)="registerSubmit()">
+      <md-input-container>
+        <input formControlName="name" [formGroup]="registerForm" mdInput placeholder="Name" type="text" [(ngModel)]="name" name="name"
+          class="input-control">
+        <md-error *ngIf="registerForm.controls.name.errors?.required">
+          Name is<strong> required</strong>
+        </md-error>
+      </md-input-container>
+
+      <md-input-container>
+        <input formControlName="email" [formGroup]="registerForm" mdInput placeholder="Email" type="email" [(ngModel)]="email" name="email"
+          class="input-control">
+        <md-error *ngIf="registerForm.controls.email.errors?.pattern">
+          Please enter a valid email address
+        </md-error>
+        <md-error *ngIf="registerForm.controls.email.errors?.required">
+          Email is <strong>required</strong>
+        </md-error>
+      </md-input-container>
+
+      <md-input-container>
+        <input formControlName="password" [formGroup]="registerForm" mdInput placeholder="Password" type="password" [(ngModel)]="password"
+          name="password" class="input-control">
+        <md-error *ngIf="registerForm.controls.password.errors?.minlength">
+          Password must be at least <strong>8</strong> characters long
+        </md-error>
+        <md-error *ngIf="registerForm.controls.password.errors?.required">
+          Password is <strong>required</strong>
+        </md-error>
+      </md-input-container>
+
+      <md-input-container>
+        <input formControlName="confirmPassword" [formGroup]="registerForm" mdInput placeholder="Confirm Password" type="password"
+          [(ngModel)]="confirmPassword" name="confirmPassword" class="input-control">
+        <md-error *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">
+          Passwords do not<strong> match</strong>
+        </md-error>
+      </md-input-container>
+
+      <md-checkbox class="terms">I have read and accept <a href="#">terms and conditions</a></md-checkbox>
+
+      <button type="submit" md-raised-button>Register my account</button>
+    </form>
+
+    <p class="signup">Already have an account? <a [routerLink]="['']">Sign in</a> </p>
+  </div>
+
+</div>
