@@ -47,7 +47,7 @@ firebase.initializeApp(environment.firebase);
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard/:uid', component: DashboardComponent }
 ];
 
 @NgModule({
