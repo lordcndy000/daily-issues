@@ -1,0 +1,136 @@
+.sidenav-container {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  -webkit-box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.sidenav {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+.sidenav-logo {
+  padding: 20px 25px;
+  height: 64px;
+  background: #383c48;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12) */
+}
+
+.sidenav-logo span {
+  text-transform: uppercase;
+  margin: 0 0 0 16px;
+}
+
+.sidenav-content {
+  padding: 20px 0;
+  height: 100%;
+  background: #2d323e;
+}
+
+.sidenav-list-wrapper {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidenav-list {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  line-height: 48px;
+  justify-content: flex-start;
+  padding-right: 16px;
+  padding-left: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  outline: none;
+  color: #c0c2c5;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidenav-list i {
+  font-size: 16px;
+}
+
+.sidenav-list:hover {
+  background: #282d38;
+}
+
+.sidenav-list span {
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 13px;
+  margin-left: 20px;
+}
+
+.sidenav-active {
+  background: #673AB7;
+  color: #fff;
+  pointer-events: none;
+}
+
+.top-nav {
+  font-family: "Roboto", sans-serif;
+  padding-left: 240px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12)
+}
+
+.user-menu-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px;
+  cursor: pointer;
+  width: 175px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.user-menu-container:hover {
+  background: #ececec;
+}
+
+.user-submenu {
+  list-style-type: none;
+  width: 160px;
+  padding: 0;
+  margin: 0;
+}
+
+.user-submenu li {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Roboto", sans-serif;
+}
+
+.user-submenu li:hover {
+  background: #ececec;
+}
+
+.user-submenu li i {
+  margin-left: 11px;
+}
+
+.user-submenu li span {
+  margin-left: 15px;
+  margin-right: 11px;
+}
+
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}

@@ -1,0 +1,46 @@
+<md-sidenav-container class='sidenav-container'>
+  <md-sidenav mode="side" opened="true" class='sidenav'>
+    <div class="sidenav-logo">
+      <img src="assets/img/main-logo.svg" width="32" height="32">
+      <span>Daily Issues</span>
+    </div>
+    <div class="sidenav-content">
+      <ul class="sidenav-list-wrapper">
+        <li>
+          <a class="sidenav-list" routerLink="/dashboard/:uid" routerLinkActive="sidenav-active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="material-icons">dashboard</i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidenav-list" routerLink="/issues/:uid" routerLinkActive="sidenav-active">
+            <i class="material-icons">announcement</i> <span>Issues</span>
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </md-sidenav>
+
+</md-sidenav-container>
+<div class="top-nav">
+  <md-toolbar>
+    <span class="example-fill-remaining-space"></span>
+    <div [mdMenuTriggerFor]="userMenu" class="user-menu-container">
+      <img src="assets/img/main-logo.svg" width="42" height="42">
+      <span>{{name}}</span>
+      <i class="material-icons">keyboard_arrow_down</i>
+    </div>
+    <md-menu [overlapTrigger]="false" #userMenu="mdMenu">
+      <ul class='user-submenu'>
+        <li>
+          <i class="material-icons">account_circle</i> <span>Profile</span>
+        </li>
+        <li (click)="signout()">
+          <i class="material-icons">power_settings_new</i> <span>Logout</span>
+        </li>
+      </ul>
+    </md-menu>
+  </md-toolbar>
+</div>

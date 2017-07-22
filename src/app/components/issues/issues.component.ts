@@ -7,12 +7,12 @@ import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-issues',
+  templateUrl: './issues.component.html',
+  styleUrls: ['./issues.component.css']
 })
-export class DashboardComponent implements OnInit {
-  name: any;
+export class IssuesComponent implements OnInit {
+name: any;
 
   constructor(private af: AngularFireDatabase,
               private router: Router ) { }
@@ -26,9 +26,4 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  signout(){
-    firebase.auth().signOut().then(() => {
-      this.router.navigate(['']);
-    });
-  }
 }
