@@ -15,11 +15,12 @@ import {
   MdDialogModule,
   MdSidenavModule,
   MdToolbarModule,
-  MdMenuModule
+  MdMenuModule,
+  MdIconModule
 } from '@angular/material';
 import { MdButtonModule } from '@angular2-material/button';
-import { MdIconModule } from '@angular2-material/icon';
-import { MdIconRegistry } from '@angular2-material/icon';
+// import {  } from '@angular2-material/icon';
+// import { MdIconRegistry } from '@angular2-material/icon';
 import 'hammerjs';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -48,8 +49,8 @@ firebase.initializeApp(environment.firebase);
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard/:uid', component: DashboardComponent },
-  { path: 'issues/:uid', component: IssuesComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'issues', component: IssuesComponent }
 ];
 
 @NgModule({

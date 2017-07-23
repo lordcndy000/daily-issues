@@ -74,7 +74,7 @@
 
 .sidenav-active {
   background: #673AB7;
-  color: #fff;
+  /* color: #fff; */
   pointer-events: none;
 }
 

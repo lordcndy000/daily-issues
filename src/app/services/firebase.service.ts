@@ -58,7 +58,7 @@ export class FirebaseService {
   login(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
-        this.router.navigate(['dashboard/'+user.uid]);
+        this.router.navigate(['dashboard']);
       })
       .catch((error) => {
         const errorCode = error['code'];

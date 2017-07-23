@@ -7,12 +7,12 @@
     <div class="sidenav-content">
       <ul class="sidenav-list-wrapper">
         <li>
-          <a class="sidenav-list" routerLink="/dashboard/:uid" routerLinkActive="sidenav-active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="sidenav-list" [routerLink]="['/dashboard']" [routerLinkActive]="['sidenav-active']">
             <i class="material-icons">dashboard</i> <span>Dashboard</span>
           </a>
         </li>
         <li>
-          <a class="sidenav-list" routerLink="/issues/:uid" routerLinkActive="sidenav-active">
+          <a class="sidenav-list" [routerLink]="['/issues']" [routerLinkActive]="['sidenav-active']">
             <i class="material-icons">announcement</i> <span>Issues</span>
           </a>
         </li>
