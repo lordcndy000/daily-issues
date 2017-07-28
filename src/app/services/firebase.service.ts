@@ -85,7 +85,7 @@ interface User {
   name: string;
 }
 
-//////// Dialog \\\\\\\
+// Dialog
 // Login
 
 // Wrong password

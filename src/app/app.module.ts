@@ -42,6 +42,7 @@ import {
 } from './services/firebase.service';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { IssuesComponent } from './components/issues/issues.component';
+import { AddIssueModalComponent } from './components/modals/add-issue-modal/add-issue-modal.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     UserExistsDialog,
     RegisterSuccessDialog,
     SidenavComponent,
-    IssuesComponent
+    IssuesComponent,
+    AddIssueModalComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -99,6 +101,7 @@ const appRoutes: Routes = [
     RegisterSuccessDialog,
     WrongPasswordDialog,
     UserNotFoundDialog,
-    UserDisabledDialog]
+    UserDisabledDialog,
+    AddIssueModalComponent]
 })
 export class AppModule { }
