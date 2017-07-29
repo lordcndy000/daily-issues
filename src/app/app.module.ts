@@ -49,6 +49,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { IssuesComponent } from './components/issues/issues.component';
 import { AddIssueModalComponent } from './components/modals/add-issue-modal/add-issue-modal.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { NotesComponent } from './components/notes/notes.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 // import { AppDateAdapter } from './components/modals/add-issue-modal/AppDateAdapter';
 
 firebase.initializeApp(environment.firebase);
@@ -58,7 +61,10 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'issues', component: IssuesComponent }
+  { path: 'issues', component: IssuesComponent },
+  { path: 'notes', component: NotesComponent },
+  { path: 'contacts', component: ContactsComponent },
+  { path: 'calendar', component: CalendarComponent }
 ];
 
 @NgModule({
@@ -76,7 +82,10 @@ const appRoutes: Routes = [
     RegisterSuccessDialog,
     SidenavComponent,
     IssuesComponent,
-    AddIssueModalComponent
+    AddIssueModalComponent,
+    NotesComponent,
+    CalendarComponent,
+    ContactsComponent
   ],
   imports: [
     ReactiveFormsModule,

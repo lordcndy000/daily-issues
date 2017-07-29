@@ -12,8 +12,23 @@
           </a>
         </li>
         <li>
+          <a class="sidenav-list" [routerLink]="['/calendar']" [routerLinkActive]="['sidenav-active']">
+            <i class="material-icons">date_range</i> <span>Calendar</span>
+          </a>
+        </li>
+        <li>
           <a class="sidenav-list" [routerLink]="['/issues']" [routerLinkActive]="['sidenav-active']">
             <i class="material-icons">announcement</i> <span>Issues</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidenav-list" [routerLink]="['/notes']" [routerLinkActive]="['sidenav-active']">
+            <i class="material-icons">lightbulb_outline</i> <span>Notes</span>
+          </a>
+        </li>
+        <li>
+          <a class="sidenav-list" [routerLink]="['/contacts']" [routerLinkActive]="['sidenav-active']">
+            <i class="material-icons">contacts</i> <span>Contacts</span>
           </a>
         </li>
 
