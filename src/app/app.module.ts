@@ -16,11 +16,16 @@ import {
   MdSidenavModule,
   MdToolbarModule,
   MdMenuModule,
-  MdIconModule
+  MdIconModule,
+  MdDatepickerModule,
+  MdNativeDateModule,
+  MdSelectModule,
+  DateAdapter,
+  NativeDateAdapter
 } from '@angular/material';
 import { MdButtonModule } from '@angular2-material/button';
 // import {  } from '@angular2-material/icon';
-// import { MdIconRegistry } from '@angular2-material/icon';
+import { MdIconRegistry } from '@angular2-material/icon';
 import 'hammerjs';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -43,6 +48,8 @@ import {
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { IssuesComponent } from './components/issues/issues.component';
 import { AddIssueModalComponent } from './components/modals/add-issue-modal/add-issue-modal.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+// import { AppDateAdapter } from './components/modals/add-issue-modal/AppDateAdapter';
 
 firebase.initializeApp(environment.firebase);
 
@@ -93,7 +100,12 @@ const appRoutes: Routes = [
     MdDialogModule,
     MdSidenavModule,
     MdToolbarModule,
-    MdMenuModule
+    MdMenuModule,
+    MdSelectModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent],

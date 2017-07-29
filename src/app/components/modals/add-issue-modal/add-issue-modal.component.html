@@ -1,12 +1,54 @@
-
-<md-toolbar color="primary">
-  <span md-dialog-title>New Issue</span>
-</md-toolbar>
-<div class="modal-header">
-  <h2 md-dialog-title>modal</h2>
+<div class="add-issue-title-wrapper">
+  <h2 md-dialog-title>New Issue</h2>
+  <button md-mini-fab [md-dialog-close]="true" color="warn"><md-icon>close</md-icon></button>
 </div>
+<form (submit)="addIssueSubmit()" class='add-issue-form'>
+  <md-input-container class='full-width'>
+    <input [(ngModel)]="issueTitle" [formControl]="issueFormControl" type="text" name="issueTitle" mdInput placeholder="Title">
+    <md-error *ngIf="issueFormControl.hasError('required')">
+      Title is <strong>required</strong>
+    </md-error>
+  </md-input-container>
 
-<md-dialog-content>Please choose another username</md-dialog-content>
-<md-dialog-actions>
-  <button class='auto-left' md-button [md-dialog-close]="true">Got it</button>
-</md-dialog-actions>
+  <div class="date-container">
+    <div class="start-date-wrapper">
+      <md-input-container>
+        <input [(ngModel)]="startDate" [formControl]="dateStart" mdInput [mdDatepicker]="startCalendar" [min]="minDate" [max]="maxDate"
+          name="startDate" placeholder="Date start">
+        <button mdSuffix [mdDatepickerToggle]="startCalendar"></button>
+        <md-error *ngIf="dateStart.hasError('required')">
+          Start date is <strong>required</strong>
+        </md-error>
+      </md-input-container>
+      <md-datepicker touchUi="true" #startCalendar></md-datepicker>
+    </div>
+
+    <div class="end-date-wrapper">
+      <md-input-container>
+        <input [(ngModel)]="endDate" [formControl]="dateEnd" mdInput [mdDatepicker]="endCalendar" [min]="minDate" [max]="maxDate"
+          name="endDate" placeholder="Date end">
+        <button mdSuffix [mdDatepickerToggle]="endCalendar"></button>
+        <md-error *ngIf="dateEnd.hasError('required')">
+          End date is <strong>required</strong>
+        </md-error>
+      </md-input-container>
+      <md-datepicker touchUi="true" #endCalendar></md-datepicker>
+    </div>
+  </div>
+
+  <label class='details-label'>Details</label>
+  <div [froalaEditor]='options' [(ngModel)]="issueDetails" name="issueDetails"></div>
+  <br>
+  <md-select [formControl]="issuePriority" placeholder="Priority" [(ngModel)]="selectedPriority" name="priorities">
+    <md-option *ngFor="let priority of priorities" [value]="priority.value">
+      {{priority.viewValue}}
+    </md-option>
+    <md-error *ngIf="issuePriority.hasError('required')">
+
+    </md-error>
+  </md-select>
+
+  <br>
+  <button type="submit" md-raised-button class='add-btn' color="accent">Add issue</button>
+
+</form>

@@ -7,15 +7,18 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable, 
 import { ifError } from 'assert';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Rx';
+import { User, Issue } from '../interfaces/interface';
 
 @Injectable()
 export class FirebaseService {
   users: FirebaseListObservable<any[]>;
   user: FirebaseObjectObservable<any>;
+  issues: FirebaseListObservable<any[]>;
+  issue: FirebaseObjectObservable<any>;
 
   constructor(private dialog: MdDialog, private router: Router, private af: AngularFireDatabase) {
     this.users = this.af.list('/users') as FirebaseListObservable<User[]>;
-    // console.log(af.list('/users'));
+    this.issues = this.af.list('/issues') as FirebaseListObservable<Issue[]>;
   }
 
   // Register
@@ -77,12 +80,25 @@ export class FirebaseService {
       });
   }
 
-}
+  // retrieve Issues
+  getIssues() {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      return this.af.list('/issues', {
+        query: {
+          orderByChild: 'userId',
+          equalTo: user.uid
+        }
+      });
+    } else {
+      console.log('user not logged in')
+    }
+  }
+  // add issue
+  addIssue(issueObj) {
+    return this.issues.push(issueObj);
+  }
 
-interface User {
-  $key?: string;
-  userId: string;
-  name: string;
 }
 
 // Dialog

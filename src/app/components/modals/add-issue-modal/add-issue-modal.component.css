@@ -1,0 +1,30 @@
+.full-width {
+  width: 100%;
+}
+
+.date-container {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-issue-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-issue-title-wrapper h2 {
+  margin: 0;
+}
+
+.details-label {
+  color: #9F9FAD;
+  font-weight: 500;
+}
+
+.add-btn {
+  text-transform: uppercase;
+  margin-top: 24px;
+}
