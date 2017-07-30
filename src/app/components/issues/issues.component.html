@@ -22,15 +22,25 @@
 
   </div>
   <div class="issue-main">
-    <div class="issue-add-container">
-      <button md-raised-button color="accent" (click)="addIssueModal()">ADD ISSUE</button>
+    <div class="issue-main-item">
+      <div class="issue-add-container">
+        <button md-raised-button color="accent" (click)="addIssueModal()">ADD ISSUE</button>
+      </div>
+
+      <div class='issue-item-wrapper'>
+        <div class="issue-item" *ngFor="let issue of issues">
+          <p class="issue-title">{{ issue.title }}</p>
+          <p class='issue-details' innerHTML="{{ issue.details }}"></p>
+
+        </div>
+      </div>
     </div>
 
     <!-- <ul>
-      <li *ngFor="let issue of issues | async">
+      <li *ngFor="let issue of issues">
         <div innerHTML="{{ issue.details }}"></div>
       </li>
-    </ul> -->
+    </ul>  -->
 
 
   </div>

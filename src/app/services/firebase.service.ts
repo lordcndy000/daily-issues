@@ -12,9 +12,9 @@ import { User, Issue } from '../interfaces/interface';
 @Injectable()
 export class FirebaseService {
   users: FirebaseListObservable<any[]>;
-  user: FirebaseObjectObservable<any>;
+  // user: FirebaseObjectObservable<any>;
   issues: FirebaseListObservable<any[]>;
-  issue: FirebaseObjectObservable<any>;
+  // issue: FirebaseObjectObservable<any>;
 
   constructor(private dialog: MdDialog, private router: Router, private af: AngularFireDatabase) {
     this.users = this.af.list('/users') as FirebaseListObservable<User[]>;
@@ -80,7 +80,7 @@ export class FirebaseService {
       });
   }
 
-  // retrieve Issues
+  // get Issues
   getIssues() {
     const user = firebase.auth().currentUser;
     if (user) {
@@ -89,9 +89,9 @@ export class FirebaseService {
           orderByChild: 'userId',
           equalTo: user.uid
         }
-      });
+      }) as FirebaseListObservable<Issue[]>;
     } else {
-      console.log('user not logged in')
+      this.router.navigate(['']);
     }
   }
   // add issue

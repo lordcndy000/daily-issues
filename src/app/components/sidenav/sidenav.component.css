@@ -80,6 +80,7 @@
 
 .top-nav {
   font-family: "Roboto", sans-serif;
+  max-height: 64px;
   padding-left: 240px;
   position: fixed;
   top: 0;

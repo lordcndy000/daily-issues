@@ -7,6 +7,7 @@
   background: url(/assets/img/bg-home.jpg) no-repeat center;
   background-size: cover;
   height: 200px;
+  max-height: 200px;
   width: 100%;
 }
 
@@ -22,6 +23,8 @@
   height: 100%;
   padding: 35px;
   display: flex;
+  width: 170px;
+  max-width: 170px;
 }
 
 .section-title span {
@@ -62,15 +65,6 @@
   color: #8a8a8a;
 }
 
-.issue-main {
-  display: flex;
-  align-items: center;
-}
-
-.issue-add-container {
-   padding: 35px; 
-}
-
 .issue-list-container {
   width: 100%;
   display: flex;
@@ -86,4 +80,46 @@
 
 .issue-list-container .mat-toolbar-row {
   padding: 18px;
+}
+
+
+/*  */
+
+.issue-main {
+  width: 100%;
+  height: calc(100vh - 264px);
+  background: #f5f5f5;
+}
+
+.issue-main-item {
+  display: flex;
+  height: 100%;
+}
+
+.issue-add-container {
+  padding: 35px;
+  width: 170px;
+  max-width: 170px;
+}
+
+.issue-item-wrapper {
+  height: 100%;
+  overflow: auto;
+  margin: 0 24px;
+  /* display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex: 1; */
+  box-shadow: 0 4px 5px rgba(0, 0, 0, .2), 0 7px 10px  rgba(0, 0, 0, .14), 0 2px 16px  rgba(0, 0, 0, .12);
+}
+
+.issue-item {
+  background: #fafafa;
+  padding: 16px 16px 16px 48px;
+  border-top: 1px solid #e0e0e0;
+  font-family: "Roboto", sans-serif;
+}
+.issue-item .issue-title {
+  font-size: 15px;
+  font-weight: 500;
 }

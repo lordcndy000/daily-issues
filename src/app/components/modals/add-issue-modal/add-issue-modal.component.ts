@@ -43,9 +43,9 @@ export class AddIssueModalComponent implements OnInit {
   // TinyMCE config
   options: Object = {
     charCounterCount: false,
-    pluginsEnabled: ['colors', 'lists', 'specialCharacters'],
+    pluginsEnabled: ['lists', 'specialCharacters'],
     height: 160,
-    toolbarButtons: ['bold', 'italic', 'underline', 'color', 'formatOL', 'formatUL', 'specialCharacters']
+    toolbarButtons: ['bold', 'italic', 'underline', 'formatOL', 'formatUL', 'specialCharacters']
   }
 
   constructor(private afService: FirebaseService,

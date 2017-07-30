@@ -16,8 +16,7 @@ import { AddIssueModalComponent } from '../modals/add-issue-modal/add-issue-moda
 })
 export class IssuesComponent implements OnInit {
   name: any;
-  issues: FirebaseListObservable<any[]>;
-  issuess: any;
+  issues: any;
   config = {
     height: '570px',
     width: '570px'
@@ -32,16 +31,19 @@ export class IssuesComponent implements OnInit {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.name = user.displayName;
-        this.getIssue();
+
+        // Get Issues
+        this.afService.getIssues().subscribe(issues => {
+          console.log(issues);
+          this.issues = issues;
+
+        });
       } else {
         this.router.navigate(['']);
       }
     });
   }
-  // Retrieve issue
-  getIssue() {
-    this.issues = this.afService.getIssues();
-  }
+
   // Add issue
   addIssueModal() {
     this.dialog.open(AddIssueModalComponent, this.config);

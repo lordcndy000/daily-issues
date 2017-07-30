@@ -8,6 +8,7 @@ export interface User {
 // For adding an Issue
 export interface Issue {
   $key?: string;
+  userId: any;
   title: string;
   startDate: string;
   endDate: string;
