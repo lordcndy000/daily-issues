@@ -33,7 +33,7 @@
 
 .issue-search {
   height: 100%;
-  padding: 24px 24px 0 24px;
+  padding: 24px 24px 0 0;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -87,8 +87,8 @@
 
 .issue-main {
   width: 100%;
-  height: calc(100vh - 264px);
   background: #f5f5f5;
+  height: calc(100vh - 264px);
 }
 
 .issue-main-item {
@@ -105,12 +105,12 @@
 .issue-item-wrapper {
   height: 100%;
   overflow: auto;
-  margin: 0 24px;
+  margin: 0 24px 0 0;
   /* display: flex;
   justify-content: space-between;
   flex-direction: column;
   flex: 1; */
-  box-shadow: 0 4px 5px rgba(0, 0, 0, .2), 0 7px 10px  rgba(0, 0, 0, .14), 0 2px 16px  rgba(0, 0, 0, .12);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, .2), 0 7px 10px rgba(0, 0, 0, .14), 0 2px 16px rgba(0, 0, 0, .12);
 }
 
 .issue-item {
@@ -119,6 +119,7 @@
   border-top: 1px solid #e0e0e0;
   font-family: "Roboto", sans-serif;
 }
+
 .issue-item .issue-title {
   font-size: 15px;
   font-weight: 500;
