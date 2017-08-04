@@ -1,0 +1,6 @@
+<h2 md-dialog-title>Are you sure?</h2>
+<md-dialog-content>This issue will be deleted</md-dialog-content>
+<md-dialog-actions>
+  <button md-button [md-dialog-close]="true" (click)="deleteIssue(key)">Delete</button>
+  <button md-button [md-dialog-close]="true">Cancel</button>
+</md-dialog-actions>

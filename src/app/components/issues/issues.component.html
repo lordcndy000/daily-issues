@@ -28,19 +28,17 @@
       </div>
 
       <div class='issue-item-wrapper'>
-        <div class="issue-item" *ngFor="let issue of issues">
+        <div class="issue-item" *ngFor="let issue of issues?.reverse()">
           <p class="issue-title">{{ issue.title }}</p>
           <p class='issue-details' innerHTML="{{ issue.details }}"></p>
+          <div class="issue-item-ctrl-wrapper">
+            <i class="material-icons delete-icon" (click)="confirmDeleteIssue(issue.$key)">delete</i>
+            <i class="material-icons edit-icon">edit</i>
+          </div>
 
         </div>
       </div>
     </div>
-
-    <!-- <ul>
-      <li *ngFor="let issue of issues">
-        <div innerHTML="{{ issue.details }}"></div>
-      </li>
-    </ul>  -->
 
 
   </div>

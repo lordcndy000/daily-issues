@@ -106,10 +106,7 @@
   height: 100%;
   overflow: auto;
   margin: 0 24px 0 0;
-  /* display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  flex: 1; */
+  width: 100%;
   box-shadow: 0 4px 5px rgba(0, 0, 0, .2), 0 7px 10px rgba(0, 0, 0, .14), 0 2px 16px rgba(0, 0, 0, .12);
 }
 
@@ -118,9 +115,31 @@
   padding: 16px 16px 16px 48px;
   border-top: 1px solid #e0e0e0;
   font-family: "Roboto", sans-serif;
+  
 }
 
 .issue-item .issue-title {
   font-size: 15px;
   font-weight: 500;
+}
+
+.issue-item-ctrl-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.issue-item-ctrl-wrapper .material-icons {
+  color: #cdcdcd;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.issue-item-ctrl-wrapper .delete-icon:hover {
+  color: #f44336;
+}
+
+.issue-item-ctrl-wrapper .edit-icon:hover {
+  color: #2196F3;
 }

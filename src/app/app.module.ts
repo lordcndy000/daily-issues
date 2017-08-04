@@ -24,7 +24,6 @@ import {
   NativeDateAdapter
 } from '@angular/material';
 import { MdButtonModule } from '@angular2-material/button';
-// import {  } from '@angular2-material/icon';
 import { MdIconRegistry } from '@angular2-material/icon';
 import 'hammerjs';
 import { AngularFireModule } from 'angularfire2';
@@ -52,7 +51,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { NotesComponent } from './components/notes/notes.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
-// import { AppDateAdapter } from './components/modals/add-issue-modal/AppDateAdapter';
+import { DeleteIssueModalComponent } from './components/modals/delete-issue-modal/delete-issue-modal.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -85,7 +84,8 @@ const appRoutes: Routes = [
     AddIssueModalComponent,
     NotesComponent,
     CalendarComponent,
-    ContactsComponent
+    ContactsComponent,
+    DeleteIssueModalComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -123,6 +123,7 @@ const appRoutes: Routes = [
     WrongPasswordDialog,
     UserNotFoundDialog,
     UserDisabledDialog,
-    AddIssueModalComponent]
+    AddIssueModalComponent,
+    DeleteIssueModalComponent]
 })
 export class AppModule { }

@@ -94,9 +94,15 @@ export class FirebaseService {
       this.router.navigate(['']);
     }
   }
+
   // add issue
   addIssue(issueObj) {
     return this.issues.push(issueObj);
+  }
+
+  // delete issue
+  deleteIssue(key) {
+    return this.issues.remove(key);
   }
 
 }
