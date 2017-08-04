@@ -28,15 +28,30 @@
       </div>
 
       <div class='issue-item-wrapper'>
-        <div class="issue-item" *ngFor="let issue of issues?.reverse()">
+
+         <div class="issue-item" *ngFor="let issue of issues?.reverse()">
           <p class="issue-title">{{ issue.title }}</p>
           <p class='issue-details' innerHTML="{{ issue.details }}"></p>
           <div class="issue-item-ctrl-wrapper">
-            <i class="material-icons delete-icon" (click)="confirmDeleteIssue(issue.$key)">delete</i>
-            <i class="material-icons edit-icon">edit</i>
+            <i class="material-icons delete-icon" mdTooltip="Delete issue" mdTooltipPosition="above" (click)="confirmDeleteIssue(issue.$key)">delete</i>
+            <i class="material-icons edit-icon" mdTooltip="Edit issue" mdTooltipPosition="above">edit</i>
           </div>
-
-        </div>
+          <div *ngIf="issue.startDate == dateToday; else elseTemplate2">
+              <p>today</p>
+          </div>
+          <ng-template #elseTemplate2>
+            <p>not today</p>
+          </ng-template>
+          
+          <div *ngIf="issue.priority === 'High'; else elseTemplate">
+            <p>h</p>
+          </div>
+          <ng-template #elseTemplate>
+            <p>m</p>
+          </ng-template>
+          
+        </div> 
+        
       </div>
     </div>
 

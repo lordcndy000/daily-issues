@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material'
 import { FirebaseService } from '../../../services/firebase.service'
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase/app'
 
 @Component({
   selector: 'app-delete-issue-modal',

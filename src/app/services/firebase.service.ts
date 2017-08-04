@@ -1,24 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Component } from '@angular/core';
-import { MdDialog, MdDialogConfig } from '@angular/material';
-import { Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable, } from 'angularfire2/database';
-import { ifError } from 'assert';
-import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs/Rx';
-import { User, Issue } from '../interfaces/interface';
+import { Injectable } from '@angular/core'
+import { Component } from '@angular/core'
+import { MdDialog, MdDialogConfig } from '@angular/material'
+import { Router } from '@angular/router'
+import { AngularFireAuth } from 'angularfire2/auth'
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable, } from 'angularfire2/database'
+import { ifError } from 'assert'
+import * as firebase from 'firebase/app'
+import { Observable } from 'rxjs/Rx'
+import { User, Issue } from '../interfaces/interface'
 
 @Injectable()
 export class FirebaseService {
-  users: FirebaseListObservable<any[]>;
-  // user: FirebaseObjectObservable<any>;
-  issues: FirebaseListObservable<any[]>;
-  // issue: FirebaseObjectObservable<any>;
+  users: FirebaseListObservable<any[]>
+  // user: FirebaseObjectObservable<any>
+  issues: FirebaseListObservable<any[]>
+  // issue: FirebaseObjectObservable<any>
 
   constructor(private dialog: MdDialog, private router: Router, private af: AngularFireDatabase) {
-    this.users = this.af.list('/users') as FirebaseListObservable<User[]>;
-    this.issues = this.af.list('/issues') as FirebaseListObservable<Issue[]>;
+    this.users = this.af.list('/users') as FirebaseListObservable<User[]>
+    this.issues = this.af.list('/issues') as FirebaseListObservable<Issue[]>
   }
 
   // Register
@@ -30,79 +30,79 @@ export class FirebaseService {
           userId: user.uid,
           email: user.email,
           name: name
-        };
+        }
         // push the object
-        this.users.push(userDataObj);
-        this.dialog.open(RegisterSuccessDialog);
-        this.router.navigate(['']);
+        this.users.push(userDataObj)
+        this.dialog.open(RegisterSuccessDialog)
+        this.router.navigate([''])
         // firebase automatically signs in the user
       }).then(() => {
         // update the user profile
-        const user = firebase.auth().currentUser;
+        const user = firebase.auth().currentUser
         user.updateProfile({
           displayName: name,
           photoURL: ''
         }).then(() => {
-          console.log(user.displayName);
+          console.log(user.displayName)
         }, (error) => {
-          console.log(error);
-        });
+          console.log(error)
+        })
       })
       .catch((error) => {
         // handle errors
-        const errorCode = error['code'];
+        const errorCode = error['code']
         if (errorCode === 'auth/email-already-in-use') {
-          this.dialog.open(UserExistsDialog);
+          this.dialog.open(UserExistsDialog)
         }
-      });
+      })
   }
 
   // Login
   login(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['dashboard'])
       })
       .catch((error) => {
-        const errorCode = error['code'];
+        const errorCode = error['code']
         switch (errorCode) {
           case 'auth/user-disabled':
-            this.dialog.open(UserDisabledDialog);
-            break;
+            this.dialog.open(UserDisabledDialog)
+            break
           case 'auth/user-not-found':
-            this.dialog.open(UserNotFoundDialog);
-            break;
+            this.dialog.open(UserNotFoundDialog)
+            break
           case 'auth/wrong-password':
-            this.dialog.open(WrongPasswordDialog);
-            break;
+            this.dialog.open(WrongPasswordDialog)
+            break
         }
 
-      });
+      })
   }
 
   // get Issues
   getIssues() {
-    const user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser
     if (user) {
       return this.af.list('/issues', {
         query: {
           orderByChild: 'userId',
           equalTo: user.uid
         }
-      }) as FirebaseListObservable<Issue[]>;
+      }) as FirebaseListObservable<Issue[]>
     } else {
-      this.router.navigate(['']);
+      this.router.navigate([''])
     }
   }
 
   // add issue
   addIssue(issueObj) {
-    return this.issues.push(issueObj);
+    return this.issues.push(issueObj)
   }
 
   // delete issue
   deleteIssue(key) {
-    return this.issues.remove(key);
+    return this.issues.remove(key)
   }
 
 }
@@ -130,7 +130,7 @@ export class UserNotFoundDialog {
   constructor(private router: Router) { }
 
   goToRegister() {
-    this.router.navigate(['register']);
+    this.router.navigate(['register'])
   }
 }
 

@@ -99,7 +99,8 @@ export class AddIssueModalComponent implements OnInit {
           endDate: toDateEnd,
           details: issueDetails,
           priority: selectedPriority,
-          isResolved: isResolved
+          isResolved: isResolved,
+          timeStamp: Date.now()
         }
 
 
