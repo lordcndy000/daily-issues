@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'
-import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material'
-import { FirebaseService } from '../../../services/firebase.service'
-import * as firebase from 'firebase/app'
+import { Component, OnInit } from '@angular/core';
+import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import { FirebaseService } from '../../../services/firebase.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-delete-issue-modal',
@@ -14,13 +14,12 @@ export class DeleteIssueModalComponent implements OnInit {
 
   constructor(private afService: FirebaseService,
     private dialog: MdDialog,
-    public dialogRef: MdDialogRef<DeleteIssueModalComponent>) { }
+    public dialogRefDel: MdDialogRef<DeleteIssueModalComponent>) { }
 
   ngOnInit() {
 
   }
-
   deleteIssue(key) {
-    this.afService.deleteIssue(key)
+    this.afService.deleteIssue(key);
   }
 }

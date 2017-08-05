@@ -54,6 +54,7 @@ import { CalendarComponent } from './components/calendar/calendar.component'
 import { ContactsComponent } from './components/contacts/contacts.component'
 import { DeleteIssueModalComponent } from './components/modals/delete-issue-modal/delete-issue-modal.component';
 import { DerpPipePipe } from './pipes/derp-pipe.pipe';
+import { EditIssueModalComponent } from './components/modals/edit-issue-modal/edit-issue-modal.component';
 
 firebase.initializeApp(environment.firebase)
 
@@ -88,7 +89,8 @@ const appRoutes: Routes = [
     CalendarComponent,
     ContactsComponent,
     DeleteIssueModalComponent,
-    DerpPipePipe
+    DerpPipePipe,
+    EditIssueModalComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -128,6 +130,7 @@ const appRoutes: Routes = [
     UserNotFoundDialog,
     UserDisabledDialog,
     AddIssueModalComponent,
-    DeleteIssueModalComponent]
+    DeleteIssueModalComponent,
+    EditIssueModalComponent]
 })
 export class AppModule { }

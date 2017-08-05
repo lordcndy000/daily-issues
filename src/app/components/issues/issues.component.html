@@ -29,31 +29,93 @@
 
       <div class='issue-item-wrapper'>
 
-         <div class="issue-item" *ngFor="let issue of issues?.reverse()">
-          <p class="issue-title">{{ issue.title }}</p>
-          <p class='issue-details' innerHTML="{{ issue.details }}"></p>
-          <div class="issue-item-ctrl-wrapper">
-            <i class="material-icons delete-icon" mdTooltip="Delete issue" mdTooltipPosition="above" (click)="confirmDeleteIssue(issue.$key)">delete</i>
-            <i class="material-icons edit-icon" mdTooltip="Edit issue" mdTooltipPosition="above">edit</i>
+        <div class="issue-item" *ngFor="let issue of issues?.reverse()">
+
+          <div class="select-wrapper">
+            <md-checkbox value="{{ issue.$key }}"></md-checkbox>
           </div>
-          <div *ngIf="issue.startDate == dateToday; else elseTemplate2">
-              <p>today</p>
+
+          <div class="issue-item-main">
+
+            <p class="issue-title">{{ issue.title }}</p>
+            <p class='issue-details' innerHTML="{{ issue.details }}"></p>
+
+            <div class="issue-date-wrapper">
+              <div class="start-date-wrapper">
+                <div *ngIf="issue.startDate == dateToday; else startNotToday">
+                  <p class='sdate label-bold'><i class="material-icons date-icons">date_range</i> Start: {{issue.startDate}} <span class='todayLabel'>TODAY</span></p>
+                </div>
+                <ng-template #startNotToday>
+                  <p class='sdate label-bold'><i class="material-icons date-icons">date_range</i> Start: {{issue.startDate}}</p>
+                </ng-template>
+              </div>
+              <div class="end-date-wrapper">
+                <div *ngIf="issue.endDate == dateToday; else endNotToday">
+                  <p class='edate label-bold'><i class="material-icons date-icons">date_range</i> End: {{issue.endDate}} <span class='todayLabel'>TODAY</span></p>
+                </div>
+                <ng-template #endNotToday>
+                  <p class='edate label-bold'><i class="material-icons date-icons">date_range</i> End: {{issue.endDate}}</p>
+                </ng-template>
+              </div>
+            </div>
+
+            <p *ngIf="issue.isResolved === true" class="issue-resolution"><span class='label-bold resolution-label'>Resolution: </span>{{issue.resolveMessage}}</p>
           </div>
-          <ng-template #elseTemplate2>
-            <p>not today</p>
-          </ng-template>
-          
-          <div *ngIf="issue.priority === 'High'; else elseTemplate">
-            <p>h</p>
+
+          <div class="issue-priority-wrapper">
+            <i *ngIf="issue.isResolved === true" mdTooltip="Issue resolved" class="material-icons prio-icon resolved-icon">done</i>
+            <i *ngIf="issue.priority === '3'" mdTooltip="High priority" class="material-icons prio-icon high-prio">info</i>
+            <i *ngIf="issue.priority === '2'" mdTooltip="Meduim priority" class="material-icons prio-icon med-prio">info</i>
+            <i *ngIf="issue.priority === '1'" mdTooltip="Low priority" class="material-icons prio-icon low-prio">info</i>
+            <button md-icon-button [mdMenuTriggerFor]="itemControlMenu">
+              <md-icon>more_vert</md-icon>
+            </button>
+            <md-menu #itemControlMenu="mdMenu">
+              <button md-menu-item (click)="confirmDeleteIssue(issue.$key)">
+                <md-icon>delete</md-icon>
+                <span>Delete issue</span>
+              </button>
+              <button md-menu-item (click)="editIssue(issue.title, issue.startDate, issue.endDate, issue.details, issue.priority)">
+                <md-icon>edit</md-icon>
+                <span>Edit issue</span>
+              </button>
+              <button md-menu-item>
+                <div *ngIf="issue.isResolved === false; else elseTemplate">
+                  <md-icon>done</md-icon>
+                  <span>Resolve issue</span>
+                </div>
+                <ng-template #elseTemplate>
+                  <md-icon>undo</md-icon>
+                  <span>Unresolve issue</span>
+                </ng-template>
+                
+                
+              </button>
+            </md-menu>
+
+            <!-- <div class="issue-item-ctrl-wrapper">
+              <i class="material-icons delete-icon" mdTooltip="Delete issue" (click)="confirmDeleteIssue(issue.$key)">delete</i>
+              <i class="material-icons edit-icon" mdTooltip="Edit issue">edit</i>
+            </div> -->
+
           </div>
-          <ng-template #elseTemplate>
-            <p>m</p>
-          </ng-template>
-          
-        </div> 
-        
+
+        </div>
       </div>
     </div>
 
   </div>
 </section>
+<!-- <div *ngIf="issue.startDate == dateToday; else elseTemplate2">
+            <p>today</p>
+          </div>
+          <ng-template #elseTemplate2>
+            <p>not today</p>
+          </ng-template>
+
+          <div *ngIf="issue.priority === 'High'; else elseTemplate">
+            <p>h</p>
+          </div>
+          <ng-template #elseTemplate>
+            <p>m</p>
+          </ng-template> -->

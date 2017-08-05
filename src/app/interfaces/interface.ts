@@ -15,6 +15,7 @@ export interface Issue {
   endDate: string
   details: string
   priority: string
-  isResolved: boolean
+  isResolved: boolean,
+  resolveMessage: string,
   timeStamp: any
 }

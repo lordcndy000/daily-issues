@@ -112,10 +112,20 @@
 
 .issue-item {
   background: #fafafa;
-  padding: 16px 16px 16px 48px;
+  padding: 16px;
   border-top: 1px solid #e0e0e0;
   font-family: "Roboto", sans-serif;
-  
+  display: flex;
+  align-items: center;
+}
+
+.select-wrapper {
+  width: 48px;
+}
+
+.issue-item-main {
+  width: calc(100% - 48px);
+  padding: 0 12px;
 }
 
 .issue-item .issue-title {
@@ -128,6 +138,69 @@
   justify-content: flex-end;
 }
 
+.issue-date-wrapper {
+  display: flex;
+  font-size: 13px;
+}
+
+.label-bold {
+  font-weight: 500;
+}
+
+.date-icons {
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.end-date-wrapper {
+  margin-left: 15px;
+}
+
+span.todayLabel {
+  background: #e6e6e6;
+  padding: 8px;
+  font-size: 11px;
+  font-weight: 900;
+  color: #673AB7;
+}
+
+.issue-resolution {
+  font-size: 13px;
+}
+
+.resolution-label {
+  color: #673AB7;
+}
+
+.issue-priority-wrapper {
+  text-align: center;
+}
+
+.prio-icon {
+  font-size: 30px;
+}
+
+.high-prio {
+  color: #F44336;
+}
+
+.med-prio {
+  color: #FFC107;
+}
+
+.low-prio {
+  color: #4CAF50;
+}
+
+.resolved-icon {
+  color: #CDDC39;
+  display: block;
+  font-weight: 900;
+  height: 40px;
+}
+
+
+/* 
 .issue-item-ctrl-wrapper .material-icons {
   color: #cdcdcd;
   cursor: pointer;
@@ -142,4 +215,4 @@
 
 .issue-item-ctrl-wrapper .edit-icon:hover {
   color: #2196F3;
-}
+} */
