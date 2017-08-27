@@ -116,7 +116,33 @@ export class FirebaseService {
     }
     return firebase.database().ref().child('/issues/' + editObj.key)
       .update(updateObj);
-    
+  }
+
+  // resolve issue
+  resolveIssue(resolveObj) {
+    let updateResolve = {
+      resolveMessage: resolveObj.resolveMessage,
+      isResolved: resolveObj.isResolved
+    }
+    return firebase.database().ref().child('/issues/' + resolveObj.key)
+    .update(updateResolve);
+  }
+
+  // unresolve issue
+  unresolveIssue(key) {
+    return firebase.database().ref().child('/issues/' + key)
+      .update({
+        'isResolved' : false,
+        'resolveMessage' : ''
+      });
+  }
+
+  // edit resolution
+  editResolution(key, updatedResolution) {
+    return firebase.database().ref().child('/issues/' + key)
+      .update({
+        'resolveMessage' : updatedResolution
+      });
   }
 
 }

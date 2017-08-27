@@ -1,0 +1,11 @@
+<div class="reso-title-wrapper">
+  <h2 md-dialog-title>Edit Resolution</h2>
+  <button md-mini-fab [md-dialog-close]="true" color="warn"><md-icon>close</md-icon></button>
+</div>
+<form (submit)="editResolution()" class='reso-form'>
+  <label class='details-label'>Resolution</label>
+
+  <div [froalaEditor]='options' [(ngModel)]="resoObj.resolveMessage" name="resolution"></div>
+  <button type="submit" md-raised-button class='resolve-btn' color="accent">Edit resolution</button>
+
+</form>

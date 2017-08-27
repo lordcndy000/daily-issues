@@ -62,16 +62,17 @@ export class EditIssueModalComponent implements OnInit {
   ) { }
 
   ngOnInit() { }
+
   editIssueSubmit() {
 
-    let editObj = {
+    const editObj = {
       key: this.editIssueObj.key,
       issueTitle: this.editIssueObj.title,
       startDate: this.editIssueObj.startDate,
       endDate: this.editIssueObj.endDate,
       issueDetails: this.editIssueObj.details,
       selectedPriority: this.editIssueObj.priority
-    }
+    };
 
     if (editObj.issueTitle === undefined || editObj.issueTitle === '' ||
       editObj.startDate === undefined || editObj.startDate === null ||

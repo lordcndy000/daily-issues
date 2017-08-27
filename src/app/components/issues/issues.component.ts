@@ -13,6 +13,8 @@ import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 import { AddIssueModalComponent } from '../modals/add-issue-modal/add-issue-modal.component';
 import { DeleteIssueModalComponent } from '../modals/delete-issue-modal/delete-issue-modal.component';
 import { EditIssueModalComponent } from '../modals/edit-issue-modal/edit-issue-modal.component';
+import { ResolveIssueModalComponent } from '../modals/resolve-issue-modal/resolve-issue-modal.component';
+import { EditResoModalComponent } from '../modals/edit-reso-modal/edit-reso-modal.component';
 
 @Component({
   selector: 'app-issues',
@@ -23,8 +25,12 @@ export class IssuesComponent implements OnInit {
 
   name: any;
   issues: any;
-  addModalConfig = {
+  modalConfig = {
     height: '570px',
+    width: '570px'
+  };
+  resolveModalConfig = {
+    height: '378px',
     width: '570px'
   };
   // Issue object
@@ -74,7 +80,7 @@ export class IssuesComponent implements OnInit {
   }
   // Add issue
   addIssueModal() {
-    this.dialog.open(AddIssueModalComponent, this.addModalConfig);
+    this.dialog.open(AddIssueModalComponent, this.modalConfig);
   }
 
   // Delete issue
@@ -85,7 +91,7 @@ export class IssuesComponent implements OnInit {
 
   // Edit issue
   editIssue(key, title, startDate, endDate, details, priority) {
-    let editIssueObj = {
+    const editIssueObj = {
       key,
       title,
       startDate,
@@ -93,7 +99,35 @@ export class IssuesComponent implements OnInit {
       details,
       priority
     };
-    const dialogRefEdit = this.dialog.open(EditIssueModalComponent, this.addModalConfig);
+    const dialogRefEdit = this.dialog.open(EditIssueModalComponent, this.modalConfig);
     dialogRefEdit.componentInstance.editIssueObj = editIssueObj;
+  }
+
+  // Resolve issue
+  resolveIssue(key, isResolved, resolveMessage) {
+    const resolveObj = {
+      key,
+      isResolved,
+      resolveMessage
+    };
+
+    const resolveRefEdit = this.dialog.open(ResolveIssueModalComponent, this.resolveModalConfig);
+    resolveRefEdit.componentInstance.resolveObj = resolveObj;
+  }
+
+  // Unresolve issue
+  unresolveIssue(key) {
+    this.afService.unresolveIssue(key);
+  }
+
+  // Edit resolution
+  editResolution(key, resolveMessage) {
+    const resoObj = {
+      key,
+      resolveMessage
+    };
+
+    const resoRefEdit = this.dialog.open(EditResoModalComponent, this.resolveModalConfig);
+    resoRefEdit.componentInstance.resoObj = resoObj;
   }
 }

@@ -24,6 +24,7 @@ export class AddIssueModalComponent implements OnInit {
   endDate: any;
   issueDetails: any;
   isResolved: boolean;
+  archived: boolean;
   // Date Picker options
   minDate = new Date(2017, 6, 1);
   maxDate = new Date(2020, 0, 1);
@@ -61,7 +62,8 @@ export class AddIssueModalComponent implements OnInit {
       endDate = this.endDate,
       issueDetails = this.issueDetails,
       selectedPriority = this.selectedPriority,
-      isResolved = false;
+      isResolved = false,
+      archived = false;
     if (issueTitle === undefined || issueTitle === '' ||
       startDate === undefined || startDate === null ||
       endDate === undefined || endDate === null ||
@@ -109,7 +111,8 @@ export class AddIssueModalComponent implements OnInit {
           priority: selectedPriority,
           isResolved: isResolved,
           resolveMessage: '',
-          timeStamp: Date.now()
+          timeStamp: Date.now(),
+          archived: archived
         };
 
 

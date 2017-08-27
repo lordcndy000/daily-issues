@@ -166,9 +166,16 @@ span.todayLabel {
 
 .issue-resolution {
   font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.issue-resolution:hover {
+  background: #e6e6e6;
 }
 
 .resolution-label {
+  margin: 0;
   color: #673AB7;
 }
 

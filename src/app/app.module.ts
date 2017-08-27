@@ -55,6 +55,8 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { DeleteIssueModalComponent } from './components/modals/delete-issue-modal/delete-issue-modal.component';
 import { DerpPipePipe } from './pipes/derp-pipe.pipe';
 import { EditIssueModalComponent } from './components/modals/edit-issue-modal/edit-issue-modal.component';
+import { ResolveIssueModalComponent } from './components/modals/resolve-issue-modal/resolve-issue-modal.component';
+import { EditResoModalComponent } from './components/modals/edit-reso-modal/edit-reso-modal.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -90,7 +92,9 @@ const appRoutes: Routes = [
     ContactsComponent,
     DeleteIssueModalComponent,
     DerpPipePipe,
-    EditIssueModalComponent
+    EditIssueModalComponent,
+    ResolveIssueModalComponent,
+    EditResoModalComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -131,6 +135,8 @@ const appRoutes: Routes = [
     UserDisabledDialog,
     AddIssueModalComponent,
     DeleteIssueModalComponent,
-    EditIssueModalComponent]
+    EditIssueModalComponent,
+    ResolveIssueModalComponent,
+    EditResoModalComponent]
 })
 export class AppModule { }
