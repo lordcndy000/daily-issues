@@ -145,6 +145,14 @@ export class FirebaseService {
       });
   }
 
+  // archive issue
+  archiveIssue(key) {
+    return firebase.database().ref().child('/issues/' + key)
+      .update({
+        'archived': true
+      });
+  }
+
 }
 
 // Dialog

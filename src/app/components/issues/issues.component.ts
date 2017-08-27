@@ -76,7 +76,6 @@ export class IssuesComponent implements OnInit {
     const year = dateObj.getUTCFullYear();
 
     this.dateToday = (month < 10 ? '0' + month : month) + '/' + day + '/' + year;
-    console.log(this.dateToday);
   }
   // Add issue
   addIssueModal() {
@@ -129,5 +128,10 @@ export class IssuesComponent implements OnInit {
 
     const resoRefEdit = this.dialog.open(EditResoModalComponent, this.resolveModalConfig);
     resoRefEdit.componentInstance.resoObj = resoObj;
+  }
+
+  // Archive issue
+  archiveIssue(key) {
+    this.afService.archiveIssue(key);
   }
 }

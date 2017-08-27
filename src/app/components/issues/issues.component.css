@@ -112,9 +112,13 @@
 
 .issue-item {
   background: #fafafa;
-  padding: 16px;
   border-top: 1px solid #e0e0e0;
   font-family: "Roboto", sans-serif;
+  
+}
+
+.issue-filler {
+  padding: 16px;
   display: flex;
   align-items: center;
 }
