@@ -4,7 +4,8 @@
 </div>
 <form (submit)="editIssueSubmit()" class='edit-issue-form'>
   <md-input-container class='full-width'>
-    <input [(ngModel)]="issueTitle" [formControl]="issueFormControl" type="text" name="issueTitle" mdInput placeholder="Title" value="{{editIssueObj.title}}">
+    <input [(ngModel)]="editIssueObj.title" [formControl]="issueFormControl" type="text" name="editIssueObj.title" mdInput placeholder="Title"
+      value="{{editIssueObj.title}}">
     <md-error *ngIf="issueFormControl.hasError('required')">
       Title is <strong>required</strong>
     </md-error>
@@ -13,8 +14,8 @@
   <div class="date-container">
     <div class="start-date-wrapper">
       <md-input-container>
-        <input [(ngModel)]="startDate" [formControl]="dateStart" mdInput [mdDatepicker]="startCalendar" [min]="minDate" [max]="maxDate"
-          name="startDate" placeholder="Date start" value="{{editIssueObj.startDate}}">
+        <input [(ngModel)]="editIssueObj.startDate" [formControl]="dateStart" mdInput [mdDatepicker]="startCalendar" name="editIssueObj.startDate"
+          placeholder="Date start">
         <button mdSuffix [mdDatepickerToggle]="startCalendar"></button>
         <md-error *ngIf="dateStart.hasError('required')">
           Start date is <strong>required</strong>
@@ -25,8 +26,7 @@
 
     <div class="end-date-wrapper">
       <md-input-container>
-        <input [(ngModel)]="endDate" [formControl]="dateEnd" mdInput [mdDatepicker]="endCalendar" [min]="minDate" [max]="maxDate"
-          name="endDate" placeholder="Date end">
+        <input [(ngModel)]="editIssueObj.endDate" [formControl]="dateEnd" mdInput [mdDatepicker]="endCalendar" name="editIssueObj.endDate" placeholder="Date end">
         <button mdSuffix [mdDatepickerToggle]="endCalendar"></button>
         <md-error *ngIf="dateEnd.hasError('required')">
           End date is <strong>required</strong>

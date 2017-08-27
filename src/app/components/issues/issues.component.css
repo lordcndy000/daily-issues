@@ -199,6 +199,10 @@ span.todayLabel {
   height: 40px;
 }
 
+.issue-menu {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
 
 /* 
 .issue-item-ctrl-wrapper .material-icons {

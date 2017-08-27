@@ -76,9 +76,9 @@ export class AddIssueModalComponent implements OnInit {
       const startMonth = toStringStart.substring(5, 7);
       const startDay = toStringStart.substring(8, 10);
       const startDaytoInt = parseInt(startDay, 10);
-      // const startDayResult = startDaytoInt + 1;
+
       let startDayResult;
-      if(startDaytoInt < 31) {
+      if (startDaytoInt < 31) {
         startDayResult = startDaytoInt + 1;
       }
 
@@ -88,9 +88,9 @@ export class AddIssueModalComponent implements OnInit {
       const endMonth = toStringEnd.substring(5, 7);
       const endDay = toStringEnd.substring(8, 10);
       const endDaytoInt = parseInt(endDay, 10);
-      // const endDayResult = endDaytoInt + 1;
+
       let endDayResult;
-      if(endDaytoInt < 31) {
+      if (endDaytoInt < 31) {
         endDayResult = endDaytoInt + 1;
       }
 

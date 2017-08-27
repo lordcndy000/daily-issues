@@ -71,15 +71,15 @@
               <md-icon>more_vert</md-icon>
             </button>
             <md-menu #itemControlMenu="mdMenu">
-              <button md-menu-item (click)="confirmDeleteIssue(issue.$key)">
+              <button md-menu-item (click)="confirmDeleteIssue(issue.$key)" class='issue-menu'>
                 <md-icon>delete</md-icon>
                 <span>Delete issue</span>
               </button>
-              <button md-menu-item (click)="editIssue(issue.title, issue.startDate, issue.endDate, issue.details, issue.priority)">
+              <button md-menu-item (click)="editIssue(issue.$key, issue.title, issue.startDate, issue.endDate, issue.details, issue.priority)" class='issue-menu'>
                 <md-icon>edit</md-icon>
                 <span>Edit issue</span>
               </button>
-              <button md-menu-item>
+              <button md-menu-item class='issue-menu'>
                 <div *ngIf="issue.isResolved === false; else elseTemplate">
                   <md-icon>done</md-icon>
                   <span>Resolve issue</span>
@@ -88,8 +88,10 @@
                   <md-icon>undo</md-icon>
                   <span>Unresolve issue</span>
                 </ng-template>
-                
-                
+              </button>
+              <button md-menu-item class='issue-menu'>
+                <md-icon>archive</md-icon>
+                <span>Archive issue</span>
               </button>
             </md-menu>
 

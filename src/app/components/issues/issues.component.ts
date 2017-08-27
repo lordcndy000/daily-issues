@@ -1,12 +1,12 @@
-import { toArray } from 'rxjs/operator/toArray'
-import { FirebaseApp } from 'angularfire2/app'
-import { Component, OnInit } from '@angular/core'
-import { FirebaseService } from '../../services/firebase.service'
-import { AngularFireAuth } from 'angularfire2/auth'
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable, } from 'angularfire2/database'
-import * as firebase from 'firebase/app'
-import { Observable } from 'rxjs/Rx'
-import 'rxjs/add/operator/map'
+import { toArray } from 'rxjs/operator/toArray';
+// import { FirebaseApp } from 'angularfire2/app';
+import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../../services/firebase.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable, } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Router } from '@angular/router';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
@@ -84,8 +84,9 @@ export class IssuesComponent implements OnInit {
   }
 
   // Edit issue
-  editIssue(title, startDate, endDate, details, priority) {
+  editIssue(key, title, startDate, endDate, details, priority) {
     let editIssueObj = {
+      key,
       title,
       startDate,
       endDate,
