@@ -43,6 +43,10 @@ export class IssuesComponent implements OnInit {
   isResolved: boolean;
   dateToday: any;
 
+  triggerSelectOpts: boolean;
+  selectedIssue: boolean;
+  selectIssue: any;
+
 
   constructor(private af: AngularFireDatabase,
     private router: Router,
@@ -134,4 +138,45 @@ export class IssuesComponent implements OnInit {
   archiveIssue(key) {
     this.afService.archiveIssue(key);
   }
+
+  // Select all
+  selectAll() {
+    this.triggerSelectOpts = true;
+
+  }
+  selected(key) {
+    console.log(key)
+  }
+
+  // Select today
+  selectToday() {
+    console.log('today');
+  }
+
+  // Select resolved
+  selectResolved() {
+    console.log('resolved');
+  }
+
+  // Select low
+  selectLow() {
+    console.log('low');
+  }
+
+  // Select medium
+  selectMid() {
+    console.log('medium');
+  }
+
+  // Select high
+  selectHigh() {
+    console.log('high');
+  }
+
+  // change(key) {
+  //   if(this.selectedIssue = true) {
+  //     console.log(key)
+  //   }
+
+  // }
 }
