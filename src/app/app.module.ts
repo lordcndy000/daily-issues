@@ -58,6 +58,7 @@ import { EditIssueModalComponent } from './components/modals/edit-issue-modal/ed
 import { ResolveIssueModalComponent } from './components/modals/resolve-issue-modal/resolve-issue-modal.component';
 import { EditResoModalComponent } from './components/modals/edit-reso-modal/edit-reso-modal.component';
 
+
 firebase.initializeApp(environment.firebase);
 
 // Routes

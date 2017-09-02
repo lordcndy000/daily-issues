@@ -27,7 +27,7 @@ export class AddIssueModalComponent implements OnInit {
   archived: boolean;
   // Date Picker options
   minDate = new Date(2017, 6, 1);
-  maxDate = new Date(2020, 0, 1);
+  maxDate = new Date(2022, 0, 1);
 
   issueFormControl = new FormControl('', [
     Validators.required]);
@@ -63,7 +63,8 @@ export class AddIssueModalComponent implements OnInit {
       issueDetails = this.issueDetails,
       selectedPriority = this.selectedPriority,
       isResolved = false,
-      archived = false;
+      archived = false,
+      selected = false;
     if (issueTitle === undefined || issueTitle === '' ||
       startDate === undefined || startDate === null ||
       endDate === undefined || endDate === null ||
@@ -71,48 +72,36 @@ export class AddIssueModalComponent implements OnInit {
       selectedPriority === undefined || selectedPriority === '') {
       return false;
     } else {
-      // Work with the dates
-      // Start
-      const toStringStart = JSON.stringify(startDate).replace(/"/g, '').substring(0, 10);
-      const startYear = toStringStart.substring(0, 4);
-      const startMonth = toStringStart.substring(5, 7);
-      const startDay = toStringStart.substring(8, 10);
-      const startDaytoInt = parseInt(startDay, 10);
+      // Work with dates
+      const smonth = startDate.getMonth() + 1;
+      const sday = startDate.getDate();
+      const syear = startDate.getFullYear();
 
-      let startDayResult;
-      if (startDaytoInt < 31) {
-        startDayResult = startDaytoInt + 1;
-      }
+      const emonth = startDate.getMonth() + 1;
+      const eday = startDate.getDate();
+      const eyear = startDate.getFullYear();
 
-      // End
-      const toStringEnd = JSON.stringify(endDate).replace(/"/g, '').substring(0, 10);
-      const endYear = toStringEnd.substring(0, 4);
-      const endMonth = toStringEnd.substring(5, 7);
-      const endDay = toStringEnd.substring(8, 10);
-      const endDaytoInt = parseInt(endDay, 10);
+      const newStartDate = (smonth < 10 ? '0' + smonth : smonth) + '/'
+        + ((sday.toString().length === 1) ? '0' + sday.toString() : sday) + '/' + syear;
 
-      let endDayResult;
-      if (endDaytoInt < 31) {
-        endDayResult = endDaytoInt + 1;
-      }
-
-      const toDateStart = startMonth + '/' + startDayResult.toString() + '/' + startYear;
-      const toDateEnd = endMonth + '/' + endDayResult.toString() + '/' + endYear;
-
+      const newEndtDate = (emonth < 10 ? '0' + emonth : emonth) + '/'
+        + ((eday.toString().length === 1) ? '0' + eday.toString() : eday) + '/' + eyear;
 
       const user = firebase.auth().currentUser;
+
       if (user) {
         const issueObj = {
           userId: user.uid,
           title: issueTitle,
-          startDate: toDateStart,
-          endDate: toDateEnd,
+          startDate: newStartDate,
+          endDate: newEndtDate,
           details: issueDetails,
           priority: selectedPriority,
           isResolved: isResolved,
           resolveMessage: '',
           timeStamp: Date.now(),
-          archived: archived
+          archived: archived,
+          selected: selected
         };
 
 

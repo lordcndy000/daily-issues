@@ -25,14 +25,14 @@
               <button md-menu-item class='issue-menu' (click)="selectMid()">Medium Priority</button>
               <button md-menu-item class='issue-menu' (click)="selectHigh()">High Priority</button>
             </md-menu>
-            <div *ngIf="triggerSelectOpts||selectedIssue" class='select-opts-container'>
+            <div *ngIf="triggerSelectOpts" class='select-opts-container'>
               <div class='toolbar-separator'></div>
-              <button class='select-icon-btn' md-raised-button><md-icon class='select-action-icon'>delete</md-icon> Delete selected</button>
+              <button class='select-icon-btn' md-raised-button (click)="deleteSelected()"><md-icon class='select-action-icon'>delete</md-icon> Delete selected</button>
               <button class='select-icon-btn' md-raised-button><md-icon class='select-action-icon'>archive</md-icon> Archive selected</button>
             </div>
           </md-toolbar>
         </div>
-      </div>    
+      </div>
     </div>
 
   </div>
@@ -43,10 +43,10 @@
       </div>
 
       <div class='issue-item-wrapper'>
-        <div class="issue-item" *ngFor="let issue of issues?.reverse()">
+        <div class="issue-item" *ngFor="let issue of issues?.reverse();let i = index;">
           <div class='issue-filler' *ngIf="issue.archived === false">
             <div class="select-wrapper">
-              <md-checkbox [checked]="triggerSelectOpts" value="{{ issue.$key }}"></md-checkbox>
+              <md-checkbox  (change)="selectIssue(issue.$key)" value="{{issue.$key}}"></md-checkbox>
             </div>
 
             <div class="issue-item-main">

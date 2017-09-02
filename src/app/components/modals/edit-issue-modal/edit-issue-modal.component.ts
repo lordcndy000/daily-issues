@@ -82,37 +82,26 @@ export class EditIssueModalComponent implements OnInit {
       return false;
     } else {
       if (typeof editObj.startDate === 'object') {
-        const toStringStart = JSON.stringify(editObj.startDate).replace(/"/g, '').substring(0, 10);
-        const startYear = toStringStart.substring(0, 4);
-        const startMonth = toStringStart.substring(5, 7);
-        const startDay = toStringStart.substring(8, 10);
-        const startDaytoInt = parseInt(startDay, 10);
+        const smonth = editObj.startDate.getMonth() + 1;
+        const sday = editObj.startDate.getDate();
+        const syear = editObj.startDate.getFullYear();
 
-        let startDayResult;
-        if (startDaytoInt < 31) {
-          startDayResult = startDaytoInt + 1;
-        }
+        const newStartDate = (smonth < 10 ? '0' + smonth : smonth) + '/'
+          + ((sday.toString().length === 1) ? '0' + sday.toString() : sday) + '/' + syear;
 
-        const toDateStart = startMonth + '/' + startDayResult.toString() + '/' + startYear;
-
-        editObj.startDate = toDateStart;
+        editObj.startDate = newStartDate;
 
       }
 
       if (typeof editObj.endDate === 'object') {
-        const toStringEnd = JSON.stringify(editObj.endDate).replace(/"/g, '').substring(0, 10);
-        const endYear = toStringEnd.substring(0, 4);
-        const endMonth = toStringEnd.substring(5, 7);
-        const endDay = toStringEnd.substring(8, 10);
-        const endDaytoInt = parseInt(endDay, 10);
+        const emonth = editObj.endDate.getMonth() + 1;
+        const eday = editObj.endDate.getDate();
+        const eyear = editObj.endDate.getFullYear();
 
-        let endDayResult;
-        if (endDaytoInt < 31) {
-          endDayResult = endDaytoInt + 1;
-        }
-        const toDateEnd = endMonth + '/' + endDayResult.toString() + '/' + endYear;
+        const newEndtDate = (emonth < 10 ? '0' + emonth : emonth) + '/'
+          + ((eday.toString().length === 1) ? '0' + eday.toString() : eday) + '/' + eyear;
 
-        editObj.endDate = toDateEnd;
+        editObj.endDate = newEndtDate;
 
       }
 
