@@ -15,10 +15,10 @@
 
         <div class="issue-list-container">
           <md-toolbar color="light">
-            <md-checkbox [(ngModel)]="triggerSelectOpts"></md-checkbox>
+            <md-checkbox [(ngModel)]="selectedAll" (ngModelChange)="selectAll();"></md-checkbox>
             <button class='select-item-trigger' md-mini-fab [mdMenuTriggerFor]="selectMenu"><md-icon>arrow_drop_down</md-icon></button>
             <md-menu #selectMenu="mdMenu">
-              <button md-menu-item class='issue-menu' (click)="selectAll()">All</button>
+              <button md-menu-item class='issue-menu' (click)="selectAllBtn();">All</button>
               <button md-menu-item class='issue-menu' (click)="selectToday()">Today</button>
               <button md-menu-item class='issue-menu' (click)="selectResolved()">Resolved</button>
               <button md-menu-item class='issue-menu' (click)="selectLow()">Low Priority</button>
@@ -46,7 +46,7 @@
         <div class="issue-item" *ngFor="let issue of issues?.reverse();let i = index;">
           <div class='issue-filler' *ngIf="issue.archived === false">
             <div class="select-wrapper">
-              <md-checkbox  (change)="selectIssue(issue.$key)" value="{{issue.$key}}"></md-checkbox>
+              <md-checkbox value="{{issue.$key}}" [(ngModel)]="issue.selected" (ngModelChange)="checkIfAllSelected(issue.$key);"></md-checkbox>
             </div>
 
             <div class="issue-item-main">

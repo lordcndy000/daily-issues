@@ -1,6 +1,6 @@
 import { toArray } from 'rxjs/operator/toArray';
 // import { FirebaseApp } from 'angularfire2/app';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable, } from 'angularfire2/database';
@@ -42,11 +42,12 @@ export class IssuesComponent implements OnInit {
   priority: string;
   isResolved: boolean;
   dateToday: any;
+  selectedIssue: boolean;
+  selectedIssues: Array<any> = [];
+
+  selectedAll: any;
 
   triggerSelectOpts: boolean;
-  selectedIssue: boolean;
-  selectIssue: any;
-
 
   constructor(private af: AngularFireDatabase,
     private router: Router,
@@ -62,6 +63,11 @@ export class IssuesComponent implements OnInit {
         // Get Issues
         this.afService.getIssues().subscribe((issues) => {
           this.issues = issues;
+          for (let i = 0; i < issues.length; i++) {
+            issues[i]['selected'] = false;
+          }
+          // console.log(issues)
+
         });
 
         // Get date
@@ -75,11 +81,12 @@ export class IssuesComponent implements OnInit {
 
   dateNow() {
     const dateObj = new Date();
-    const month = dateObj.getUTCMonth() + 1;
-    const day = dateObj.getUTCDate();
-    const year = dateObj.getUTCFullYear();
+    const month = dateObj.getMonth() + 1;
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
 
-    this.dateToday = (month < 10 ? '0' + month : month) + '/' + day + '/' + year;
+    this.dateToday = (month < 10 ? '0' + month : month) + '/' + ((day.toString().length === 1) ? '0' + day.toString() : day) + '/' + year;
+
   }
   // Add issue
   addIssueModal() {
@@ -141,11 +148,48 @@ export class IssuesComponent implements OnInit {
 
   // Select all
   selectAll() {
-    this.triggerSelectOpts = true;
+    this.selectedIssues.splice(0, this.selectedIssues.length)
+    if (this.triggerSelectOpts === true) {
+      this.triggerSelectOpts = false;
+      for (let i = 0; i < this.issues.length; i++) {
+        this.issues[i].selected = false;
+        this.selectedIssues.splice(0, this.selectedIssues.length)
+      }
+    } else {
+      this.triggerSelectOpts = true;
+      for (let i = 0; i < this.issues.length; i++) {
+        this.issues[i].selected = this.selectedAll;
+        this.selectedIssues.push(this.issues[i].$key);
+      }
+    }
+
+    console.log(this.selectedIssues)
 
   }
+  selectAllBtn() {
+    if (this.selectedAll === true) {
+      this.selectedAll = false;
+    } else {
+      this.selectedAll = true;
+    }
+    this.selectAll();
+  }
+
+  checkIfAllSelected(key) {
+    if (this.selectedIssues.indexOf(key) === -1) {
+      this.selectedIssues.push(key)
+    } else {
+      for (let i = this.selectedIssues.length - 1; i >= 0; i--) {
+        if (this.selectedIssues[i] === key) {
+          this.selectedIssues.splice(i, 1);
+        }
+      }
+    }
+    console.log(this.selectedIssues)
+  }
+
   selected(key) {
-    console.log(key)
+    console.log(key);
   }
 
   // Select today
@@ -173,10 +217,25 @@ export class IssuesComponent implements OnInit {
     console.log('high');
   }
 
-  // change(key) {
-  //   if(this.selectedIssue = true) {
-  //     console.log(key)
-  //   }
+  //  Delete selected
+  deleteSelected() {
+    const filterSelectedIssues = [...new Set(this.selectedIssues)];
+    
+  }
 
+  // Select issue
+  // selectIssue(key) {
+  //   this.triggerSelectOpts = true;
+  //   this.selectedIssues.push(key);
+  //   console.log(this.selectedIssues);
   // }
+
+  // Unselect/Select all using the head checkbox
+  selectAllBox() {
+    if (this.triggerSelectOpts === true) {
+      this.triggerSelectOpts = false;
+    } else {
+      this.triggerSelectOpts = true;
+    }
+  }
 }

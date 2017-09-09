@@ -63,8 +63,7 @@ export class AddIssueModalComponent implements OnInit {
       issueDetails = this.issueDetails,
       selectedPriority = this.selectedPriority,
       isResolved = false,
-      archived = false,
-      selected = false;
+      archived = false;
     if (issueTitle === undefined || issueTitle === '' ||
       startDate === undefined || startDate === null ||
       endDate === undefined || endDate === null ||
@@ -100,8 +99,7 @@ export class AddIssueModalComponent implements OnInit {
           isResolved: isResolved,
           resolveMessage: '',
           timeStamp: Date.now(),
-          archived: archived,
-          selected: selected
+          archived: archived
         };
 
 
